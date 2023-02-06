@@ -67,3 +67,7 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
             [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
         }
 }
+
+function reload-environment {
+  $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+}
